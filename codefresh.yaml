@@ -1,0 +1,28 @@
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+  - "push"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "pehtoorismies/dt65-mongodump"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+  build:
+    title: "Building Docker Image"
+    type: "build"
+    image_name: "pehtoorismies/mongodump"
+    tag: "v1.0"
+    dockerfile: "Dockerfile"
+    stage: "build"
+  push:
+    title: "Pushing image to dockerhub"
+    type: "push"
+    image_name: "pehtoorismies/dt65-mongodump"
+    registry: "dockerhub"
+    candidate: "${{build}}"
+    tags:
+      - "v1.0"
+    stage: "push"
