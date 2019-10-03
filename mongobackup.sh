@@ -10,7 +10,7 @@ mongo_out_file=$backup_dir/mongodump-$HOST_NAME-$timestamp
 
 
 echo "Create dump"
-mongodump --uri=$MONGO_URL -d $DB_NAME -o $mongo_out_file
+mongodump --uri=$MONGO_URL -o $mongo_out_file
 echo "Create tar"
 tar cf $mongo_out_file.tar $mongo_out_file
 
