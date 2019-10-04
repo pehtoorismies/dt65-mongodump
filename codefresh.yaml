@@ -14,7 +14,7 @@ steps:
     title: "Building Docker Image"
     type: "build"
     image_name: "pehtoorismies/mongodump"
-    tag: "v1.1"
+    tag: "v1.2"
     dockerfile: "Dockerfile"
     stage: "build"
   push:
@@ -24,5 +24,5 @@ steps:
     registry: "dockerhub"
     candidate: "${{build}}"
     tags:
-      - "v1.1"
+      - "v1.2"
     stage: "push"

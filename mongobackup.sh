@@ -14,6 +14,6 @@ tar cf $mongo_out_file.tar $mongo_out_file
 
 echo $SERVICE_ACCOUNT_JSON > $backup_dir/service-account.json
 gcloud auth activate-service-account --key-file=$backup_dir/service-account.json
-gsutil cp $mongo_out_file.tar $GOOGLE_BUCKET
+gsutil cp $mongo_out_file.tar $GOOGLE_BUCKET/$GOOGLE_FOLDER
 
 echo "Copied dump to Google storage"
