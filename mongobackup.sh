@@ -9,7 +9,7 @@ timestamp=`date +%F-%H%M`
 mongo_out_file=$backup_dir/mongodump-$HOST_NAME-$timestamp
 
 echo "Create dump & tar"
-mongodump --uri=$MONGO_URL -o $mongo_out_file
+mongodump --forceTableScan --uri=$MONGO_URL -o $mongo_out_file
 tar cf $mongo_out_file.tar $mongo_out_file
 
 echo $SERVICE_ACCOUNT_JSON > $backup_dir/service-account.json
